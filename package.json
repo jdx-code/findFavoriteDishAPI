@@ -1,0 +1,22 @@
+{
+  "name": "findfavoritedishapi",
+  "version": "1.0.0",
+  "description": "Project under construction..",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdx-code/findFavoriteDishAPI.git"
+  },
+  "author": "jyotirmoy and tony",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdx-code/findFavoriteDishAPI/issues"
+  },
+  "homepage": "https://github.com/jdx-code/findFavoriteDishAPI#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
