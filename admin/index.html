@@ -9,11 +9,15 @@
 <body>
     <h1>Welcome Admin..</h1>
     <h2>You can add a new dish with the country name here..</h2>
-    <form>
+    <form action="../admin-panel/add" method="POST">
         <label>
             Dish name : 
         </label>
         <input type="text" name="dishname">
+        <label>
+            Image url : 
+        </label>
+        <input type="text" name="imgurl">
         <label>
             Country :
         </label>
