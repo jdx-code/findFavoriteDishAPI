@@ -1,55 +1,33 @@
 // Importing the express module
 const express = require('express');
-const MongoClient = require('mongodb').MongoClient
-const dotenv = require('dotenv')
-
-dotenv.config()
-
-let db;
-let dbName = process.env.dbName
-let connectionString = process.env.MONGO_URI
-
-// Establishing database connection
-MongoClient.connect(connectionString, {
-    useUnifiedTopology: true
-})
-.then(client => {
-    console.log(`Connected to database`)
-    db = client.db(dbName)
-})
-.catch(error => console.error(error))
+const connectDB = require('./config/database')
+const homeRoutes = require('./routes/home')
+const adminRoutes = require('./routes/admin')
 
 // Assigning express object to a variable named `app`.
 // We will call the express properties and methods using `app`.
 const app = express();
 
+require('dotenv').config({ path: './config/.env' })
+connectDB()
+
+// Set the view engine
+app.set('view engine', 'ejs')
+
+// Body parser
 // Accepting request data from client side forms
 app.use(express.urlencoded({ extended: true }));
 
 // Accepting all other request data other than client side forms
 app.use(express.json());
 
-// API endpoint for admin panel
-app.get('/admin-panel', (req, res) => {
-    res.sendFile(__dirname + '/admin/index.html');
-});
+// Automatic routes made for static files in public
+app.use(express.static('public'))
 
-app.post('/admin-panel/add', (req, res) => {    
+// Using the following routes
+app.use('/', homeRoutes)
+app.use('/admin', adminRoutes)
 
-    db.collection('dish').insertOne({
-        dishname: req.body.dishname,
-        imgurl: req.body.imgurl,
-        country: req.body.country,
-    })
-    .then(result => {
-        console.log('Data added successfully!')
-        res.redirect('/')
-    })
-    .catch(err =>{
-        console.error(err)        
-    })
-    
-})
 
 // Assigning port for server
 const PORT = 5000;
