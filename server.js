@@ -28,7 +28,6 @@ app.use(express.static('public'))
 app.use('/', homeRoutes)
 app.use('/admin', adminRoutes)
 
-
 // Assigning port for server
 const PORT = 5000;
 app.listen(PORT, () => {

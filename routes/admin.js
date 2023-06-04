@@ -4,6 +4,6 @@ const adminController = require('../controllers/admin')
 
 router.get('/', adminController.getIndex)
 
-router.get('/add-dish', adminController.addInfo)
+router.post('/add-dish-info', adminController.addDishInfo)
 
 module.exports = router

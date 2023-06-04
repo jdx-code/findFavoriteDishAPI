@@ -9,14 +9,14 @@
 <body>
     <h1>Find Fav Dish Admin Panel</h1>
     <h2>Add Your fav Dish here..</h2>
-    <form>
+    <form action="/admin/add-dish-info" method="POST">
         <table>
             <tr>
                 <td>
                     <label>Item name</label>
                 </td>
                 <td>
-                    <input type="text" name="dishname" value="">
+                    <input type="text" name="itemname" value="">
                 </td>                
             </tr>
             <tr>
@@ -40,7 +40,7 @@
                     <label>Upload Image</label>                    
                 </td>
                 <td>
-                    <input type="file" name="image" value="">
+                    <input type="text" name="image" value="">
                 </td>
             </tr>
             <tr>
